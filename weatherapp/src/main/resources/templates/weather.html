@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Weather Forecast</title>
+</head>
+<body>
+<h1>Weather Forecast</h1>
+
+<!-- Weather search form -->
+<form action="/weather" method="get">
+    <label for="city">City:</label>
+    <input type="text" id="city" name="city" required>
+    <input type="submit" value="Get Weather">
+</form>
+
+<!-- Display weather information if present -->
+<div th:if="${city != null}">
+    <h2>Weather in <span th:text="${city}">City Name</span>:</h2>
+    <p><strong>Weather:</strong> <span th:text="${weather}">Weather Description</span></p>
+    <p><strong>Temperature:</strong> <span th:text="${temperature}">Temperature</span> &#8451;</p>
+</div>
+
+<!-- Display error message if present -->
+<div th:if="${error != null}">
+    <p style="color: red; font-weight: bold;" th:text="${error}">Error message</p>
+</div>
+
+</body>
+</html>
